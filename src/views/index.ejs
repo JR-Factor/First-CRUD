@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>db testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- BOOTSTRAP CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>DB-Testing</h1>
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/add" method="POST" class="form-group" autocomplete="off">
+                    <input type="text" class="form-control my-2" name="name" placeholder="Name" required>
+                    <input type="text" class="form-control my-2" name="job" placeholder="Job" required>
+                    <input type="number" class="form-control my-2" name="age" placeholder="Age" required>
+                    <button type="submit" class="btn btn-primary form-control my-2">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>N#</th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Age</th> 
+                            <th>Edit</th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0;i < worker.length;i++){%>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= worker[i].name %></td>
+                            <td><%= worker[i].job %></td>
+                            <td><%= worker[i].age %></td>
+                            <td>
+                                <a href="/delete/<%= worker[i]._id %>" class="btn btn-danger">Delete</a>
+                                <a href="/update/<%= worker[i]._id %>" class="btn btn-primary">Update</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
